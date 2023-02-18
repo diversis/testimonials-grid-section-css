@@ -43,6 +43,7 @@ body {
     font-size: 13px;
     min-height: 100vh;
     text-rendering: optimizespeed;
+    overflow-y: scroll;
 }
 
 /* Box sizing */
@@ -136,12 +137,12 @@ summary,
 .wrapper {
     display: grid;
     place-items: center;
-    padding-inline: 1rem;
+    padding: 4rem 1rem;
 }
 
 @media (min-width: 1024px) {
     .wrapper {
-        padding-inline: clamp(2rem, 5vw + 2rem, 20rem);
+        padding: 0 clamp(2rem, 5vw + 2rem, 20rem);
     }
 }
 
