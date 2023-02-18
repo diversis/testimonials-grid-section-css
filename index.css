@@ -215,7 +215,7 @@ summary,
     }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1440px) {
     .grid-testimonials {
         grid-template-columns: repeat(4, minmax(0, 1fr));
         grid-template-areas:
@@ -273,7 +273,7 @@ summary,
     background-size: cover;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1440px) {
     .testimonials-item:first-child::after {
         right: 15%;
         max-width: 8rem;
@@ -321,7 +321,7 @@ summary,
     z-index: 50;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1440px) {
     .testimonials-avatar {
         width: 3rem;
         max-height: 3rem;
