@@ -227,7 +227,9 @@ summary,
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
-    padding: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-inline: 3rem;
     border-radius: 10px;
     background-color: var(--col-bg);
     box-shadow: 0 5px 15px 5px var(--light-gray);
@@ -259,7 +261,7 @@ summary,
 
 @media (min-width: 1280px) {
     .testimonials-item:first-child::after {
-        right: 10%;
+        right: 15%;
         max-width: 8rem;
     }
 }
