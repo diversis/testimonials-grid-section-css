@@ -1,34 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap");
 
 /* ------------------- */
+
 /* Reset styles     */
+
 /* ------------------- */
 
 /* Set core root defaults */
 :root {
-    --moderate-violet: hsl(263, 55%, 52%);
-    --very-dark-grayish-blue: hsl(217, 19%, 35%);
-    --very-dark-blackish-blue: hsl(219, 29%, 14%);
-    --white: hsl(0, 0%, 100%);
-    --light-gray: hsl(0, 0%, 81%);
-    --light-grayish-blue: hsl(210, 46%, 95%);
+    --moderate-violet: hsl(263deg 55% 52%);
+    --very-dark-grayish-blue: hsl(217deg 19% 35%);
+    --very-dark-blackish-blue: hsl(219deg 29% 14%);
+    --white: hsl(0deg 0% 100%);
+    --light-gray: hsl(0deg 0% 81%);
+    --light-grayish-blue: hsl(210deg 46% 95%);
+
     font-synthesis: none;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%; /* for iOS Safari */
+    -moz-osx-font-smoothing: grayscale; /* for iOS Safari */
     text-size-adjust: 100%; /* for other mobile browsers */
 }
 
 html {
-    font-family: "Barlow Semi Condensed", system-ui, -apple-system, Segoe UI,
-        Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    font-family: "Barlow Semi Condensed", system-ui, -apple-system, "Segoe UI",
+        Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
     background-color: var(--light-grayish-blue);
     color: var(--very-dark-grayish-blue);
-}
-
-html:focus-within {
-    scroll-behavior: smooth;
 }
 
 html,
@@ -36,11 +34,15 @@ body {
     overflow-x: hidden;
 }
 
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
 /* Set core body defaults */
 body {
     font-size: 13px;
     min-height: 100vh;
-    text-rendering: optimizeSpeed;
+    text-rendering: optimizespeed;
 }
 
 /* Box sizing */
@@ -115,6 +117,7 @@ summary,
     html:focus-within {
         scroll-behavior: auto;
     }
+
     *,
     *::before,
     *::after {
@@ -126,11 +129,14 @@ summary,
 }
 
 /* ------------------------- */
+
 /*          layout           */
+
 /* ------------------------- */
 .wrapper {
     display: grid;
     place-items: center;
+    padding-inline: clamp(2rem, 5vw + 2rem, 20rem);
 }
 
 .grid {
@@ -146,26 +152,31 @@ summary,
         max-width: 375px;
     }
 }
+
 @media (min-width: 640px) {
     .container {
         max-width: 640px;
     }
 }
+
 @media (min-width: 768px) {
     .container {
         max-width: 768px;
     }
 }
+
 @media (min-width: 1024px) {
     .container {
         max-width: 1024px;
     }
 }
+
 @media (min-width: 1280px) {
     .container {
         max-width: 1280px;
     }
 }
+
 @media (min-width: 1536px) {
     .container {
         max-width: 1536px;
@@ -174,26 +185,44 @@ summary,
 
 /* Testimonial cards */
 .grid-testimonials {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-areas:
+        "a"
+        "b"
+        "c"
+        "d"
+        "e";
     gap: 2rem;
+    height: max-content;
+    max-width: 100%;
     margin-inline: auto;
     background: none;
 }
 
 @media (min-width: 1024px) {
     .grid-testimonials {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        grid-template-rows: repeat(2, minmax(0, content));
-        /* grid-template-rows: repeat(2, minmax(0, 1fr)); */
+        grid-template-areas:
+            "a a b"
+            "c d d"
+            "e e e";
         margin-bottom: auto;
         margin-top: auto;
     }
 }
 
+@media (min-width: 1280px) {
+    .grid-testimonials {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-areas:
+            "a a b e"
+            "c d d e";
+    }
+}
+
 .testimonials-item {
     --col-bg: var(--white);
-    --col-text: var(--light-gray);
+    --col-text: var(--very-dark-grayish-blue);
     --col-heading: var(--very-dark-grayish-blue);
+
     position: relative;
     display: flex;
     flex-direction: column;
@@ -205,65 +234,110 @@ summary,
 }
 
 .testimonials-item:first-child {
-    grid-column: span 2 / span 2;
     --col-bg: var(--moderate-violet);
     --col-heading: var(--white);
+    --col-text: var(--light-gray);
+
+    grid-area: a;
 }
 
-.testimonials-item:first-child:after {
+.testimonials-item:first-child::after {
     content: "";
     position: absolute;
     top: 0;
     right: 5%;
     opacity: 0.5;
-    z-index: 2;
-    width: 10rem;
-    height: 10rem;
-    background: url(./images/bg-pattern-quotation.svg);
+    z-index: 10;
+    aspect-ratio: 1/1;
+    width: 20%;
+    max-width: 5rem;
+    height: auto;
+    background: url("./images/bg-pattern-quotation.svg");
     background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media (min-width: 1280px) {
+    .testimonials-item:first-child::after {
+        right: 10%;
+        max-width: 8rem;
+    }
 }
 
 .testimonials-item:nth-child(2) {
     --col-bg: var(--very-dark-grayish-blue);
     --col-heading: var(--white);
+    --col-text: var(--light-gray);
+
+    grid-area: b;
+}
+
+.testimonials-item:nth-child(3) {
+    grid-area: c;
 }
 
 .testimonials-item:nth-child(4) {
-    grid-column: span 2 / span 2;
     --col-bg: var(--very-dark-blackish-blue);
     --col-heading: var(--white);
+    --col-text: var(--light-gray);
+
+    grid-area: d;
 }
 
 .testimonials-item:last-child {
-    grid-area: 1/4/3/5;
+    grid-area: e;
 }
 
 .testimonials-author {
     display: flex;
     flex-direction: row;
+    column-gap: 1rem;
+    z-index: 50;
+}
+
+.testimonials-avatar {
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+    width: 2rem;
+    height: auto;
+    max-height: 2rem;
+    z-index: 50;
+}
+
+@media (min-width: 1280px) {
+    .testimonials-avatar {
+        width: 3rem;
+        max-height: 3rem;
+    }
 }
 
 .testimonials-user {
     display: flex;
     flex-direction: column;
+    z-index: 50;
 }
 
 .testimonials-name {
     font-size: 125%;
+    font-weight: 500;
     color: var(--col-heading);
 }
 
+.testimonials-status {
+    color: var(--light-gray);
+}
+
 .testimonials-quote {
+    color: var(--col-text);
     font-size: 110%;
+    z-index: 50;
 }
 
 .testimonials-summary {
     color: var(--col-heading);
     font-size: 150%;
-}
-
-.testimonials-quote {
-    font-size: 110%;
+    font-weight: 600;
+    z-index: 50;
 }
 
 /* custom scrollbar */
@@ -272,11 +346,11 @@ summary,
 }
 
 ::-webkit-scrollbar-track {
-    background-color: hsl(219, 29%, 14%);
+    background-color: hsl(219deg 29% 14%);
     border-radius: 100px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: hsl(263, 55%, 52%);
+    background-color: hsl(263deg 55% 52%);
     border-radius: 100px;
 }
