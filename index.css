@@ -1,0 +1,282 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap");
+
+/* ------------------- */
+/* Reset styles     */
+/* ------------------- */
+
+/* Set core root defaults */
+:root {
+    --moderate-violet: hsl(263, 55%, 52%);
+    --very-dark-grayish-blue: hsl(217, 19%, 35%);
+    --very-dark-blackish-blue: hsl(219, 29%, 14%);
+    --white: hsl(0, 0%, 100%);
+    --light-gray: hsl(0, 0%, 81%);
+    --light-grayish-blue: hsl(210, 46%, 95%);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%; /* for iOS Safari */
+    text-size-adjust: 100%; /* for other mobile browsers */
+}
+
+html {
+    font-family: "Barlow Semi Condensed", system-ui, -apple-system, Segoe UI,
+        Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    background-color: var(--light-grayish-blue);
+    color: var(--very-dark-grayish-blue);
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+/* Set core body defaults */
+body {
+    font-size: 13px;
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+}
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    color: inherit;
+    margin: 0;
+}
+
+/* reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* remove the outline for mouse users but keep it for keyboard users */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* provide interactive elements with a cursor */
+label,
+button,
+select,
+summary,
+[type="radio"],
+[type="submit"],
+[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ------------------------- */
+/*          layout           */
+/* ------------------------- */
+.wrapper {
+    display: grid;
+    place-items: center;
+}
+
+.grid {
+    display: grid;
+}
+
+.container {
+    width: 100%;
+}
+
+@media (min-width: 375px) {
+    .container {
+        max-width: 375px;
+    }
+}
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1536px;
+    }
+}
+
+/* Testimonial cards */
+.grid-testimonials {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 2rem;
+    margin-inline: auto;
+    background: none;
+}
+
+@media (min-width: 1024px) {
+    .grid-testimonials {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, content));
+        /* grid-template-rows: repeat(2, minmax(0, 1fr)); */
+        margin-bottom: auto;
+        margin-top: auto;
+    }
+}
+
+.testimonials-item {
+    --col-bg: var(--white);
+    --col-text: var(--light-gray);
+    --col-heading: var(--very-dark-grayish-blue);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: var(--col-bg);
+    box-shadow: 0 5px 15px 5px var(--light-gray);
+}
+
+.testimonials-item:first-child {
+    grid-column: span 2 / span 2;
+    --col-bg: var(--moderate-violet);
+    --col-heading: var(--white);
+}
+
+.testimonials-item:first-child:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 5%;
+    opacity: 0.5;
+    z-index: 2;
+    width: 10rem;
+    height: 10rem;
+    background: url(./images/bg-pattern-quotation.svg);
+    background-repeat: no-repeat;
+}
+
+.testimonials-item:nth-child(2) {
+    --col-bg: var(--very-dark-grayish-blue);
+    --col-heading: var(--white);
+}
+
+.testimonials-item:nth-child(4) {
+    grid-column: span 2 / span 2;
+    --col-bg: var(--very-dark-blackish-blue);
+    --col-heading: var(--white);
+}
+
+.testimonials-item:last-child {
+    grid-area: 1/4/3/5;
+}
+
+.testimonials-author {
+    display: flex;
+    flex-direction: row;
+}
+
+.testimonials-user {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonials-name {
+    font-size: 125%;
+    color: var(--col-heading);
+}
+
+.testimonials-quote {
+    font-size: 110%;
+}
+
+.testimonials-summary {
+    color: var(--col-heading);
+    font-size: 150%;
+}
+
+.testimonials-quote {
+    font-size: 110%;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: hsl(219, 29%, 14%);
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: hsl(263, 55%, 52%);
+    border-radius: 100px;
+}
